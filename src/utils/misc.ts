@@ -36,3 +36,5 @@ export const getTargetBranch  = async(context: Context): Promise<string | undefi
 };
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getFilteredRun   = (run: ActionsGetWorkflowRunResponseData): { [key: string]: any } => Object.assign({}, ...SHOW_PROPERTIES.map(key => ({[key]: run[key]})));
+
+export const getWorkflowRunStatusFilter = (): string => getInput('WORKFLOW_RUN_STATUS_FILTER');

@@ -32,6 +32,10 @@ inputs:
   INTERVAL_MS:
     description: Interval milliseconds
     required: false
+  WORKFLOW_RUN_STATUS_FILTER:
+    description: Workflow Run Status to Filter
+    required: false
+    default: 'in_progress'
 
 branding:
   icon: 'x-circle'

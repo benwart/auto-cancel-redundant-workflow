@@ -5,7 +5,7 @@ import {Utils} from '@technote-space/github-action-helper';
 import {PaginateInterface} from '@octokit/plugin-paginate-rest';
 import {RestEndpointMethods} from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/method-types';
 import {components} from '@octokit/openapi-types';
-import {getTargetBranch, isNotExcludeRun} from './misc';
+import {getTargetBranch, isNotExcludeRun, getWorkflowRunStatusFilter} from './misc';
 
 type ActionsGetWorkflowRunResponseData = components['schemas']['workflow-run'];
 type ActionsListWorkflowRunsResponseData = components['schemas']['workflow-run'];
@@ -42,7 +42,7 @@ export const getWorkflowRuns = async(workflowId: number, logger: Logger, octokit
   } = {
     ...context.repo,
     'workflow_id': workflowId,
-    status: 'in_progress',
+    status: getWorkflowRunStatusFilter(),
     // not work properly sometimes so filter by program
     // event: context.eventName,
   };
